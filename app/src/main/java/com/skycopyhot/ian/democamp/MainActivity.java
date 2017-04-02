@@ -10,8 +10,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,9 +28,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener((view) ->
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
-        );
+        fab.setOnClickListener((view) -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -37,6 +39,19 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Runnable a = () -> Log.d("TAG", "runnable a");
+
+        List<String> list = Arrays.asList("a", "b");
+        list.forEach(b -> Log.e("TAG", b));
+        list.forEach(System.out::print);
+
+
+        List<Integer> c = Arrays.asList(1,2,3,4,5,6,7);
+        c.stream().map((x) -> x*x).forEach(System.out::println);
+        int sum = c.stream().map((x) -> x *x).reduce((x, y) -> x + y).get();
+        Log.e("TAG", sum + "");
+
 
     }
 
