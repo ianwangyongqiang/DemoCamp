@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity
         int sum = c.stream().map((x) -> x *x).reduce((x, y) -> x + y).get();
         Log.e("TAG", sum + "");
 
+        Predicate<Integer> e = (x) -> x > 0;
+        c.stream().filter((x) -> x > 5).forEach(System.out::println);
 
     }
 
