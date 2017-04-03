@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity
         Predicate<Integer> e = (x) -> x > 0;
         c.stream().filter((x) -> x > 5).forEach(System.out::println);
 
+        //TODO use Dagger/Google for the next step
+
     }
 
     @Override
